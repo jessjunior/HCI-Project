@@ -23,7 +23,7 @@ if(!isset($_SESSION['email']))
     <div class="topnav">
 
 	<!-- Centered link -->
-		<div style="display:inline; float:left"><a href="index.html"><img style="display:inline;" src="logo.jpg" width="30px"; height="30px";><h5 style="display:inline">   Greign Estates</h5></a>
+		<div style="display:inline; float:left"><a href="index.html"><img style="display:inline;" src="logo.jpg" width="30px" height="30px"><h5 style="display:inline">   Greign Estates</h5></a>
         
     </div>
         
@@ -33,7 +33,7 @@ if(!isset($_SESSION['email']))
 			<a href="news.html">News</a>
 			<a href="about.html">About</a>
 			<a href="contact.html">Contact</a>
-            <a href="login.php">Login</a>
+            <a href="../login.php">Login</a>
 		</div>
         </div>
 </header>

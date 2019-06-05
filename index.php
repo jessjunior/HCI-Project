@@ -7,19 +7,7 @@
   <script src="jquery/jquery-3.4.0.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
 <title>Home</title>
-<link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-        <link rel="stylesheet" href="css/fontello.css">
-        <link href="fonts/icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet">
-        <link href="fonts/icon-7-stroke/css/helper.css" rel="stylesheet">
-        <link href="css/animate.css" rel="stylesheet" media="screen">
-        <link rel="stylesheet" href="css/bootstrap-select.min.css"> 
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/icheck.min_all.css">
-        <link rel="stylesheet" href="css/price-range.css">
-        <link rel="stylesheet" href="css/owl.carousel.css">  
-        <link rel="stylesheet" href="css/owl.theme.css">
-        <link rel="stylesheet" href="css/owl.transitions.css">
+
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/responsive.css">
 </head>
@@ -35,6 +23,7 @@
         <div class="topnav-centered">
 			<a href="index.php" class="active">Home</a>
 			<a href="search.php">Search</a>
+            
 			<a href="news.php">News</a>
 			<a href="about.php">About</a>
 			<a href="contact.php">Contact</a>

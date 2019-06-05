@@ -70,7 +70,7 @@ p {
     margin:0;
 }
 a {
-    color: #d27e04;
+    color: #4CAF50;
     outline: 0;
     font-weight: bold;
     -webkit-transition: all .8s ease;
@@ -78,12 +78,12 @@ a {
 } 
 a:hover {
     text-decoration: none;
-    color: #1f2222;
+    color: #4CAF50;
     -webkit-transition: all .8s ease;
     transition: all .8s ease;
 }
 a:focus {
-    color: #999696;
+    color: #4CAF50;
     text-decoration: none;
 }
 img {
