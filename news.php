@@ -14,14 +14,14 @@
 <body>
 <header>
 <!-- Top navigation -->
-	
+	<div style="display:inline; float:left"><a href="index.php"><img style="display:inline;" src="img/logo.jpg" width="150px" height="50px" ></a>
+        
+    </div>
     
     <div class="topnav">
 
 	<!-- Centered link -->
-		<div style="display:inline; float:left"><a href="index.php"><img src="img/logo.jpg" width="30px" height="30px"><h5 style="display:inline">   Greign Estates</h5></a>
-        
-    </div>
+		
         
         <div class="topnav-centered">
 			<a href="index.php" >Home</a>

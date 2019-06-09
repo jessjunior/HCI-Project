@@ -15,7 +15,7 @@
 <header>
 <!-- Top navigation -->
 	
-    <div style="display:inline; float:left"><a href="index.php"><img src="img/logo.jpg" width="150px" height="50px"><h5 style="display:inline"></a>
+    <div style="display:inline; float:left"><a href="index.php"><img src="img/logo.jpg" width="150px" height="50px"></a>
         
     </div>
     <div class="topnav">
@@ -35,8 +35,8 @@
 </header>
 
 <div class="page-head">
-		<h2>
-				About Greign Estates		</h2>
+		<h1 style="text-align:center; padding-top:30px;">
+				About Greign Estates		</h1>
 			
 	</div>
 	

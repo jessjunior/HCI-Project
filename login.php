@@ -61,7 +61,7 @@ if(isset($_POST['submit'])){
       <a href="login.php" class="active">Login</a>
 		</div>
         </div>
-</header><div class="page-head"><h1>Login</h1></div>
+</header><div class="page-head"><h1 style="text-align:center; padding-top:30px;" >Login</h1></div>
 						 </div>
 <div class="container">
         <div class="row">
