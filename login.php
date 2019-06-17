@@ -1,91 +1,104 @@
 <?php
-session_start();
+include_once 'DBConnector.php';
+include_once 'user.php';
 
-include("connect.php");
-if(isset($_POST['submit'])){
-  
-  if($_POST['email']=='' || $_POST['password']==''){
-    echo "please fill the empty field.";
-}else
-  {
-    $sql="SELECT email,password FROM `users` WHERE email = '".$_POST['email']."' and password = '".$_POST['password']."'";
-     $result = mysqli_query($con,$sql);
-     print_r($result);
-      $row = mysqli_fetch_array($result);
-      
-      $count = mysqli_num_rows($result);
-      
-      // If result matched $myusername and $mypassword, table row must be 1 row
-      if($count == 1) {
-         
-         $_SESSION['email'] = $_POST['email'];
-         echo "success";
-         header("location: index.php");
-      }else {
-         $error = "Your Login Name or Password is invalid";
-      }
-  }
-}
+   $con= new DBConnector; //Connect to database
+   if (isset ($_POST['btn-login'])){
+	   $email=$_POST['email'];
+	   $password=$_POST['password'];
+	   $instance=User::create();
+	   $instance->setPassword($password);
+	   $instance->setEmail($email);
+	   
+
+	   if ($instance->isPasswordCorrect()){
+		   $instance->login();
+		   //close database connection
+		   $con->closeDatabase();
+		   //next create a user session
+		   $instance->createUserSession();
+	   }
+	   
+	   else{
+		   echo "Wrong Email/password";
+		   $con->closeDatabase();
+		   //header("Location:login.php");
+	   }
+	   
+   }
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="HCI-Project-master/css/main.css">
-    <link rel="stylesheet" href="HCI-Project-master/css/bootstrap.min.css">
-  <script src="HCI-Project-master/jquery/jquery-3.4.0.min.js"></script>
-  <script src="HCI-Project-master/js/bootstrap.min.js"></script>
-<title>Login</title>
- <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="jquery/jquery-3.4.0.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  	<script type= "text/javascript" src="validate.js"></script>
+	<link rel="stylesheet" type= "text/css" href="validate.css">
+<title>Home</title>
+
+        <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/responsive.css">
 </head>
-
 <body>
 <header>
 <!-- Top navigation -->
-	<div style="display:inline; float:left"><a href="index.php"><img style="display:inline;" src="img/logo.jpg" width="150px" height="50px" ></a>
+	<div style="display:inline; float:left"><a href="index.php"><img src="img/logo.jpg" width="150px" height="50px"></a>
         
     </div>
-        
     
     <div class="topnav">
 
 	<!-- Centered link -->
 		
+        
         <div class="topnav-centered">
-			<a href="index.php">Home</a>
-			<a href="search.php">Search</a>
+			<a href="index.php" >Home</a>
 			<a href="news.php">News</a>
 			<a href="about.php">About</a>
-			<a href="contact.php">Contact</a>
-      <a href="login.php" class="active">Login</a>
+			<a href="contact.php" >Contact</a>
+            <a href="login.php" class="active">Login</a>
 		</div>
         </div>
-</header><div class="page-head"><h1 style="text-align:center; padding-top:30px;" >Login</h1></div>
-						 </div>
-<div class="container">
-        <div class="row">
-			<div class="col-md-5 mx-auto">
-			<div id="first">
-				<div class="myform form ">
-					 <div class="logo mb-3">
-						 <div class="col-md-12 text-center">
-							
-					</div>
-                   <form action="login.php" method="post" name="login">
-                           <div class="form-group">
-                              <label for="exampleInputEmail1">Email address</label>
-                              <input type="email" name="email"  class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
-                           </div>
-                           <div class="form-group">
-                              <label for="exampleInputEmail1">Password</label>
-                              <input type="password" name="password" id="password"  class="form-control" aria-describedby="emailHelp" placeholder="Enter Password" required>
-                           </div>
-                           <div class="form-group">
+</header>
+
+                         <div class="page-head"> 
+            <div class="container">
+                <div class="row">
+                    <div class="page-head-content">
+                        <h1 class="page-title">Enter Your Login Details / Sign in </h1>               
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End page header -->
+		
+        <!-- register-area -->
+		
+        <div class="register-area" style="">
+           
+           <div class="container">
+
+                <div class="col-md-6">
+                    <div class="box-for overflow">                         
+                        <div class="col-md-12 col-xs-12 login-blocks">
+                            <h2>Login : </h2> 
+                            <form method="post" name="login" id="login" action="<?=$_SERVER['PHP_SELF']?>">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="text" class="form-control" name="email" required/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" name="password" required/>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" name="btn-login" class="btn btn-success"><strong>Log in</strong></button>
+                                </div>
+								                           <div class="form-group">
                               <p class="text-center">By signing up you accept our <a href="#">Terms Of Use</a></p>
-                           </div>
-                           <div class="col-md-12 text-center ">
-                              <button type="submit" name="submit" class=" btn btn-success">Login</button>
                            </div>
                            <div class="col-md-12 ">
                               <div class="login-or">
@@ -103,13 +116,21 @@ if(isset($_POST['submit'])){
                            <div class="form-group">
                               <p class="text-center">Don't have account? <a href="signup.php" id="signup">Sign up here</a></p>
                            </div>
-                        </form>
-                 
-				</div>
-			</div>
-			  
-		</div>
-      </div>  
-      </div>
+						   
+                            </form>
+                            <br>
+                            
+                           
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                
+                
+                    </div>
+            
+        </div>
+		
 </body>
 </html>
